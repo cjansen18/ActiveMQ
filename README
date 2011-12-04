@@ -3,3 +3,8 @@ http://pookey.co.uk/wordpress/archives/74-playing-with-activemq-using-maven
 
 This has 3 seperate Project directories...demonstrating the producer, broker
 and Consumer
+
+
+Start the broker by going into /mq and execute
+
+mvn -e org.apache.activemq.tooling:maven-activemq-plugin:5.4.2:run 
