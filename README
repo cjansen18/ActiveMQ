@@ -15,4 +15,16 @@ e.g. /usr/local/Cellar/activemq/5.5.1/
 
 execute 'activemq start'
 
-Checkout "http://localhost:8161/admin/"  
+Checkout "http://localhost:8161/admin/"
+
+++++++++++++++++++++++++++++++++++PRODUCER+++++++++++++++++++++++++++++++++
+
+In the producer directory
+
+mvn clean compile exec:java -Dexec.mainClass=net.timico.messaging.App
+
+++++++++++++++++++++++++++++++++++CONSUMER+++++++++++++++++++++++++++++++++
+
+In the Consumer directory
+
+mvn clean compile exec:java -Dexec.mainClass=net.timico.messaging.App  
