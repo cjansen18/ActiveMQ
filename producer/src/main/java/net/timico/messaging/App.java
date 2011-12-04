@@ -13,7 +13,13 @@ public class App
         // setup the connection to ActiveMQ
         ConnectionFactory factory = new ActiveMQConnectionFactory(brokerURL);
 
-        Producer producer = new Producer(factory, "test");
+        //Queue
+        Producer producer = new Producer(factory, "test",false);
+        producer.run();
+        producer.close();
+
+        //Topic
+        producer = new Producer(factory, "Simple.Test.Topic1",true);
         producer.run();
         producer.close();
     }

@@ -1,12 +1,6 @@
 package net.timico.messaging;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageProducer;
-import javax.jms.Session;
+import javax.jms.*;
 
 public class Producer
 {
@@ -15,14 +9,27 @@ public class Producer
     private Session session;
     private MessageProducer producer;
 
-    public Producer(ConnectionFactory factory, String queueName) throws JMSException
+    public Producer(ConnectionFactory factory, String queueTopicName, boolean isTopic) throws JMSException
     {
         this.factory = factory;
         connection = factory.createConnection();
         connection.start();
         session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-        Destination destination = session.createQueue(queueName);
-        producer = session.createProducer(destination);
+
+        if(isTopic) {
+
+            Topic topic = session.createTopic(queueTopicName);
+
+            producer = session.createProducer(topic);
+            producer.setTimeToLive(10000);
+            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+
+        } else {
+
+            Destination destination = session.createQueue(queueTopicName);
+            producer = session.createProducer(destination);
+
+        }
     }
 
     public void run() throws JMSException
