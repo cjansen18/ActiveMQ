@@ -4,7 +4,15 @@ http://pookey.co.uk/wordpress/archives/74-playing-with-activemq-using-maven
 This has 3 seperate Project directories...demonstrating the producer, broker
 and Consumer
 
+++++++++++++++++++++++++++++++++++BROKER+++++++++++++++++++++++++++++++++++
 
 Start the broker by going into /mq and execute
 
-mvn -e org.apache.activemq.tooling:maven-activemq-plugin:5.4.2:run 
+"mvn org.apache.activemq.tooling:maven-activemq-plugin:5.4.2:run"
+
+NOTE: Alternatively....go into the activemq directory (after installing)
+e.g. /usr/local/Cellar/activemq/5.5.1/ 
+
+execute 'activemq start'
+
+Checkout "http://localhost:8161/admin/"  
