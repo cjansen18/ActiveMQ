@@ -1,0 +1,5 @@
+This is based on the tutorial of
+http://pookey.co.uk/wordpress/archives/74-playing-with-activemq-using-maven
+
+This has 3 seperate Project directories...demonstrating the producer, broker
+and Consumer
