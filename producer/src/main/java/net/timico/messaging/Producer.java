@@ -9,7 +9,7 @@ public class Producer
     private Session session;
     private MessageProducer producer;
 
-    public Producer(ConnectionFactory factory, String queueTopicName, boolean isTopic) throws JMSException
+    public Producer(ConnectionFactory factory, String queueOrTopicName, boolean isTopic) throws JMSException
     {
         this.factory = factory;
         connection = factory.createConnection();
@@ -18,7 +18,7 @@ public class Producer
 
         if(isTopic) {
 
-            Topic topic = session.createTopic(queueTopicName);
+            Topic topic = session.createTopic(queueOrTopicName);
 
             producer = session.createProducer(topic);
             producer.setTimeToLive(10000);
@@ -26,7 +26,7 @@ public class Producer
 
         } else {
 
-            Destination destination = session.createQueue(queueTopicName);
+            Destination destination = session.createQueue(queueOrTopicName);
             producer = session.createProducer(destination);
 
         }
